@@ -1,8 +1,10 @@
 package com.prototype.controller;
 
 import com.prototype.elasticsearch.document.StudentElastic;
+import com.prototype.elasticsearch.response.StudentResponseWithAvg;
+import com.prototype.elasticsearch.response.StudentResponseWithRank;
+import com.prototype.elasticsearch.response.StudentResponseWithSum;
 import com.prototype.elasticsearch.service.StudentElasticService;
-import com.prototype.mongodb.document.StudentMongo;
 import com.prototype.mongodb.service.StudentMongoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,14 +16,12 @@ import java.util.List;
 public class StudentController {
 
     @Autowired
-    private StudentMongoService studentMongoService;
-
-    @Autowired
     private StudentElasticService studentElasticService;
 
     @GetMapping("/students")
-    public Iterable<StudentElastic> getAll() {
-        return studentElasticService.findAll();
+    //curl -XGET "http://localhost:9200/quynh/student/_search?pretty&filter_path=hits.hits._source"
+    public ResponseEntity<Iterable<StudentElastic>> getAll() {
+        return ResponseEntity.ok().body(studentElasticService.findAll());
     }
 
     @GetMapping("/students/{name}")
@@ -29,18 +29,18 @@ public class StudentController {
         return studentElasticService.findByName(name);
     }
 
-    @GetMapping("/sumScore/{id}")
-    public Float getSumScore(@PathVariable String id) {
-        return studentElasticService.getSumScore(id);
+    @GetMapping("students/sum_score")
+    public ResponseEntity<List<StudentResponseWithSum>> getStudentsWithSumScore() {
+        return ResponseEntity.ok().body(studentElasticService.getStudentsWithSumScore());
     }
 
-    @GetMapping("/avgScore/{id}")
-    public Float getAvgScore(@PathVariable String id) {
-        return studentElasticService.getAvgScore(id);
+    @GetMapping("students/avg_score")
+    public ResponseEntity<List<StudentResponseWithAvg>> getStudentsWithAvgScore() {
+        return ResponseEntity.ok().body(studentElasticService.getStudentsWithAvgScore());
     }
 
-    @GetMapping("/rank/{id}")
-    public int getRank(@PathVariable String id) {
-        return studentMongoService.getUserRank(id);
+    @GetMapping("students/rank")
+    public ResponseEntity<List<StudentResponseWithRank>> getStudentsWithRank() {
+        return ResponseEntity.ok().body(studentElasticService.getStudentsWithRank());
     }
 }

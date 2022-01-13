@@ -37,9 +37,6 @@ public class StudentElastic {
 	@Field(name = "chemistry_score")
 	private Float chemistryScore;
 
-	@Field(name = "chemistry_score")
-	private Float avgScore;
-
 	public static StudentElastic convertToElastic(StudentMongo studentMongo) {
 		return StudentElastic.builder()
 				.studentId(studentMongo.getStudentId().toString())
@@ -48,7 +45,6 @@ public class StudentElastic {
 				.mathScore(studentMongo.getMathScore())
 				.physicScore(studentMongo.getPhysicScore())
 				.chemistryScore(studentMongo.getChemistryScore())
-				.avgScore(studentMongo.getAvgScore())
 				.build();
 	}
 }

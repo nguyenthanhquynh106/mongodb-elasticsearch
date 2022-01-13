@@ -1,6 +1,11 @@
 package com.prototype.elasticsearch.service;
 
 import com.prototype.elasticsearch.document.StudentElastic;
+import com.prototype.elasticsearch.response.StudentResponseWithAvg;
+import com.prototype.elasticsearch.response.StudentResponseWithRank;
+import com.prototype.elasticsearch.response.StudentResponseWithSum;
+
+import java.util.List;
 
 public interface StudentElasticService {
     StudentElastic save(StudentElastic studentElastic);
@@ -11,8 +16,10 @@ public interface StudentElasticService {
 
     StudentElastic findByName(String name);
 
-    Float getSumScore(String id);
+    List<StudentResponseWithSum> getStudentsWithSumScore();
 
-    Float getAvgScore(String id);
+    List<StudentResponseWithAvg> getStudentsWithAvgScore();
+
+    List<StudentResponseWithRank> getStudentsWithRank();
 
 }
