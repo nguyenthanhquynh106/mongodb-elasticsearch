@@ -2,8 +2,6 @@ package com.prototype.elasticsearch.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Field;
 
 @Data
 public class StudentResponseWithAvg {

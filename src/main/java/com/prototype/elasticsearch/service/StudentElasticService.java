@@ -16,10 +16,10 @@ public interface StudentElasticService {
 
     StudentElastic findByName(String name);
 
-    List<StudentResponseWithSum> getStudentsWithSumScore();
+    List<StudentResponseWithSum> getAllStudentsWithSumScore();
 
-    List<StudentResponseWithAvg> getStudentsWithAvgScore();
+    List<StudentResponseWithAvg> getAllStudentsWithAvgScore();
 
-    List<StudentResponseWithRank> getStudentsWithRank();
+    List<StudentResponseWithRank> getAllStudentsWithRank();
 
 }

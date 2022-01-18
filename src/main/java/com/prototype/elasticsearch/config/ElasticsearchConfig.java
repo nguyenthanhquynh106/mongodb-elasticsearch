@@ -1,4 +1,4 @@
-package com.prototype.config;
+package com.prototype.elasticsearch.config;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

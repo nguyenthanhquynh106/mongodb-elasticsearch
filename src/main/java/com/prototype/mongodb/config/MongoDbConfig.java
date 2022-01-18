@@ -1,4 +1,4 @@
-package com.prototype.config;
+package com.prototype.mongodb.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

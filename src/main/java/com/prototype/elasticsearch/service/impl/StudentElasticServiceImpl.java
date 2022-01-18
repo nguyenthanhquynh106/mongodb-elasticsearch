@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -44,7 +43,7 @@ public class StudentElasticServiceImpl implements StudentElasticService {
     }
 
     @Override
-    public List<StudentResponseWithAvg> getStudentsWithAvgScore() {
+    public List<StudentResponseWithAvg> getAllStudentsWithAvgScore() {
         Iterable<StudentElastic> list = studentElasticRepository.findAll();
         List<StudentResponseWithAvg> results = new ArrayList<>();
         list.forEach(s -> {
@@ -62,7 +61,7 @@ public class StudentElasticServiceImpl implements StudentElasticService {
     }
 
     @Override
-    public List<StudentResponseWithSum> getStudentsWithSumScore() {
+    public List<StudentResponseWithSum> getAllStudentsWithSumScore() {
         Iterable<StudentElastic> list = studentElasticRepository.findAll();
         List<StudentResponseWithSum> results = new ArrayList<>();
         list.forEach(s -> {
@@ -80,7 +79,7 @@ public class StudentElasticServiceImpl implements StudentElasticService {
     }
 
     @Override
-    public List<StudentResponseWithRank> getStudentsWithRank() {
+    public List<StudentResponseWithRank> getAllStudentsWithRank() {
         Iterable<StudentElastic> list = studentElasticRepository.findAll();
         List<StudentResponseWithRank> results = new ArrayList<>();
         list.forEach(s -> {
